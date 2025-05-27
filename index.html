@@ -50,28 +50,49 @@
 							</article>
 
 						<!-- Work -->
-							<article id="work">
-								<h2 class="major">Work</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-							</article>
-					
+						<article id="work">
+						 	 <h2 class="major">Work</h2>
+ 							 <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+ 							 <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+						</article>
+
 						<!-- Rive Canvas -->
-						<canvas id="rive-canvas" width="500" height="500" style="display:block;margin:auto;"></canvas>
+							<canvas id="rive-canvas" style="display:block; margin:auto; width: 100%; height: auto; max-width: 600px;"></canvas>
 
 						<!-- Rive Script -->
-						<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
-						<script>
- 						 const riveInstance = new rive.Rive({
-   						 src: "work.riv", // Đảm bảo file này nằm đúng trong thư mục gốc hoặc điều chỉnh lại đường dẫn
-    						canvas: document.getElementById("rive-canvas"),
-   						 autoplay: true,
-   						 stateMachines: ["State Machine 1"], // Tên state machine lấy từ Rive editor
-  						  onLoad: () => {
-    						  console.log("Rive animation loaded");
-  							  }
- 							 });
-						</script>
+							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
+							<script>
+							  const canvas = document.getElementById("rive-canvas");
+
+							  // Hàm cập nhật kích thước canvas bằng pixel thực tế (canvas.width/height)
+ 							 function resizeCanvas() {
+  							  // Ví dụ: lấy chiều rộng max 600px hoặc full chiều rộng container
+   							 const width = Math.min(window.innerWidth, 600);
+   							 const height = width; // giữ canvas vuông
+
+   							 canvas.width = width;
+   							 canvas.height = height;
+
+   							 // CSS bạn có thể dùng width 100% để co giãn chiều ngang
+    							canvas.style.width = width + "px";
+    							canvas.style.height = height + "px";
+ 								 }
+	
+ 							 // Gọi resize canvas lúc load và khi resize window
+							  window.addEventListener("resize", resizeCanvas);
+							  resizeCanvas();
+
+  							// Khởi tạo animation rive sau khi canvas đã được thiết lập kích thước
+  								const riveInstance = new rive.Rive({
+   								src: "work.riv", // Đảm bảo đường dẫn chính xác
+    								canvas: canvas,
+  							 	autoplay: true,
+							    	stateMachines: ["State Machine 1"],
+   							 	onLoad: () => {
+      								console.log("Rive animation loaded");
+  									  }
+								  });
+							</script>
 
 						<!-- About -->
 							<article id="about">
