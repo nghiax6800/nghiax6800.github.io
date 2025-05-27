@@ -54,50 +54,8 @@
 								<h2 class="major">Work</h2>
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-							
-						<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Responsive Rive Canvas</title>
-  <style>
-    body, html {
-      margin: 0; 
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden; /* tránh scroll nếu muốn */
-    }
-    #rive-canvas {
-      display: block;
-      margin: auto;
-      /* không cần width và height cố định */
-      width: 100vw;   /* full chiều ngang viewport */
-      height: 100vh;  /* full chiều cao viewport */
-    }
-  </style>
-</head>
-<body>
-  <canvas id="rive-canvas"></canvas>
-
-  <script>
-    const canvas = document.getElementById('rive-canvas');
-
-    // Cập nhật kích thước canvas theo window.innerWidth/Height
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-
-    // Gọi lần đầu để set size ngay khi load
-    resizeCanvas();
-  </script>
-</body>
-</html>
-
+					
+						<canvas id="rive-canvas" width="850" height="850" style="display:block;margin:auto;"></canvas>	
 						<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
 						<script>
  						 const riveInstance = new rive.Rive({
