@@ -56,7 +56,18 @@
 								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
 								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
 							</article>
+						<!-- Rive Canvas -->
+						<canvas id="rive-canvas" width="500" height="500" style="display:block;margin:auto;"></canvas>
 
+						<!-- Rive Script -->
+						<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
+						<script>
+						  new rive.Rive({
+ 						   src: "work.riv", // Đảm bảo file này đã được upload vào thư mục gốc
+   							 canvas: document.getElementById("rive-canvas"),
+  							  autoplay: true,
+ 							 });
+						</script>
 						<!-- About -->
 							<article id="about">
 								<h2 class="major">About</h2>
