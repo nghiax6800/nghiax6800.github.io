@@ -56,20 +56,23 @@
 								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
 							</article>
 					
-						<canvas id="rive-canvas" width="850" height="850" style="display:block;margin:auto;"></canvas>
-						
+						<!-- Rive Canvas -->
+						<canvas id="rive-canvas" width="500" height="500" style="display:block;margin:auto;"></canvas>
+
+						<!-- Rive Script -->
 						<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
 						<script>
  						 const riveInstance = new rive.Rive({
    						 src: "work.riv", // Đảm bảo file này nằm đúng trong thư mục gốc hoặc điều chỉnh lại đường dẫn
-   						 canvas: document.getElementById("rive-canvas"),
+    						canvas: document.getElementById("rive-canvas"),
    						 autoplay: true,
-  						  stateMachines: ["State Machine 1"], // Tên state machine lấy từ Rive editor
+   						 stateMachines: ["State Machine 1"], // Tên state machine lấy từ Rive editor
   						  onLoad: () => {
-     						 console.log("Rive animation loaded");
-   							 }
- 							});	
+    						  console.log("Rive animation loaded");
+  							  }
+ 							 });
 						</script>
+
 						<!-- About -->
 							<article id="about">
 								<h2 class="major">About</h2>
