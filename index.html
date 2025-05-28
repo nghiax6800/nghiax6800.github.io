@@ -57,37 +57,38 @@
 						</article>
 
 						<!-- Rive Canvas -->
-								<canvas id="rive-canvas" style="display:block; margin:auto; width: 100%; height: auto; max-width: 850px;"></canvas>
+							<canvas id="rive-canvas" style="display:block; margin:auto; width: 100%; height: auto; max-width: 850px;"></canvas>
 
 						<!-- Rive Script -->
-								<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
-								<script>
- 									 const canvas = document.getElementById("rive-canvas");
+							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
+							<script>
+							  const canvas = document.getElementById("rive-canvas");
 
- 									 function resizeCanvas() {
-    									const displayWidth = canvas.clientWidth;
-    									const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
+							  function resizeCanvas() {
+ 							   const displayWidth = canvas.clientWidth;
+  							   const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
 
-   							 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
-    									canvas.width = displayWidth;
-    									canvas.height = displayHeight;
-									  }
+    						// Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
+    								canvas.width = displayWidth;
+    								canvas.height = displayHeight;
+  									}
 
- 							 // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
-  									window.addEventListener("resize", resizeCanvas);
-									  resizeCanvas();
+ 						 // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
+  								window.addEventListener("resize", resizeCanvas);
+  								resizeCanvas();
 
-  							// Khởi tạo animation rive sau khi canvas đã được thiết lập kích thước
-  									const riveInstance = new rive.Rive({
-   									src: "work.riv", // Đảm bảo đường dẫn chính xác
-    									canvas: canvas,
-  							 		autoplay: true,
-							    		stateMachines: ["State Machine 1"],
-   							 		onLoad: () => {
-      									console.log("Rive animation loaded");
-  									  }
+  						// Tạo animation
+  								new rive.Rive({
+    								src: "work.riv",
+    								canvas: canvas,
+    								autoplay: true,
+    								stateMachines: ["State Machine 1"],
+    								onLoad: () => {
+      								console.log("Rive animation loaded");
+   									 }
 								  });
-								</script>
+							</script>
+
 
 						<!-- About -->
 							<article id="about">
