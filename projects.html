@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Projects - NghiaX</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+      #close-button {
+        position: fixed;
+        top: 1.5em;
+        right: 2em;
+        z-index: 100;
+        cursor: pointer;
+        font-size: 2em;
+        color: #fff;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.2em 0.6em;
+        border-radius: 0.2em;
+        transition: background 0.3s;
+      }
+
+      #close-button:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      body.fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <a id="close-button" href="index.html#projects">×</a>
+
+    <div id="page-wrapper">
+      <article id="main">
+        <header>
+          <h2>My Projects</h2>
+          <p>Some cool stuff I've been working on</p>
+        </header>
+        <section class="wrapper style5">
+          <div class="inner">
+            <section class="project">
+              <h3>Project One</h3>
+              <p>Mô tả ngắn gọn về dự án đầu tiên.</p>
+            </section>
+            <section class="project">
+              <h3>Project Two</h3>
+              <p>Mô tả ngắn gọn về dự án thứ hai.</p>
+            </section>
+          </div>
+        </section>
+      </article>
+
+      <footer id="footer">
+        <ul class="icons">
+          <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; NghiaX</li>
+        </ul>
+      </footer>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById("close-button").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = this.href;
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
