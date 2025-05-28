@@ -55,7 +55,7 @@
  							 <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
  							 <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
 						<!-- Rive Canvas -->
-							<canvas id="rive-canvas" style="display:block; margin:auto; width: 300%; height: auto; max-width: 850px;"></canvas>
+							<canvas id="rive-canvas" style="display:block; margin:auto; width: 100%; height: auto; max-width: 850px;"></canvas>
 						<!-- Rive Script -->
 							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
 							<script>
@@ -66,13 +66,6 @@
   								bottomLeft: "storyboard.html",
   								bottomRight: "passion.html"
 										};
-						// === DEBOUNCE FUNCTION === //
-							let resizeTimeout;
-							function debounceResize() {
-  							clearTimeout(resizeTimeout);
-  							resizeTimeout = setTimeout(resizeCanvas, 100);
-								}
-
 							function resizeCanvas() {
    							const displayWidth = canvas.clientWidth;
     							const displayHeight = displayWidth; // Hoặc đổi tỷ lệ nếu cần
@@ -85,15 +78,6 @@
     							canvas.style.height = displayHeight + "px";
   									}
   
-						// Tính toán tỷ lệ scale
-							function getCanvasScale(canvas) {
-  							const rect = canvas.getBoundingClientRect();
-  							return {
-    								x: canvas.width / rect.width,
-    								y: canvas.height / rect.height
-  								};
-							}
-
 						// Tạo animation
 							new rive.Rive({
   							src: "work.riv",
@@ -104,36 +88,6 @@
   							alignment: rive.Alignment.Center,
   							onLoad: () => {
     							console.log("Rive animation loaded");
-    
-    							const handleInteraction = (clientX, clientY) => {
-      							const rect = canvas.getBoundingClientRect();
-      							const scale = getCanvasScale(canvas);
-      
-      						// Điều chỉnh tọa độ theo tỷ lệ scale
-      							const clickX = (clientX - rect.left) * scale.x;
-      							const clickY = (clientY - rect.top) * scale.y;
-      
-      							const width = canvas.width;
-      							const height = canvas.height;
-      
-      						// Xác định vùng click
-      							let link = null;
-      							if (clickX < width/2 && clickY < height/2) link = links.topLeft;
-      							else if (clickX >= width/2 && clickY < height/2) link = links.topRight;
-      							else if (clickX < width/2 && clickY >= height/2) link = links.bottomLeft;
-      							else if (clickX >= width/2 && clickY >= height/2) link = links.bottomRight;
-
-      							if (link) {
-       							 window.location.href = link;
-      								}
-   							};
-
-    						// Xử lý cả click và touch
-    							canvas.addEventListener('click', (e) => handleInteraction(e.clientX, e.clientY));
-    							canvas.addEventListener('touchend', (e) => {
-      								e.preventDefault();
-      							handleInteraction(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
-   									 });
   								}
 							});
 						// === LẮNG NGHE RESIZE === //
