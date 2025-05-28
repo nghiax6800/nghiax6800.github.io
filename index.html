@@ -107,7 +107,24 @@
       							const rect = canvas.getBoundingClientRect();
       							const scale = getCanvasScale(canvas);
       
+      						// Điều chỉnh tọa độ theo tỷ lệ scale
+      							const clickX = (clientX - rect.left) * scale.x;
+      							const clickY = (clientY - rect.top) * scale.y;
       
+      							const width = canvas.width;
+      							const height = canvas.height;
+      
+      						// Xác định vùng click
+      							let link = null;
+      							if (clickX < width/2 && clickY < height/2) link = links.topLeft;
+      							else if (clickX >= width/2 && clickY < height/2) link = links.topRight;
+      							else if (clickX < width/2 && clickY >= height/2) link = links.bottomLeft;
+      							else if (clickX >= width/2 && clickY >= height/2) link = links.bottomRight;
+
+      							if (link) {
+       							 window.location.href = link;
+      								}
+   							};
 
     						// Xử lý cả click và touch
     							canvas.addEventListener('click', (e) => handleInteraction(e.clientX, e.clientY));
