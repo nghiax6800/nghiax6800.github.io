@@ -73,18 +73,46 @@
   							resizeTimeout = setTimeout(resizeCanvas, 100);
 								}
 
-							function resizeCanvas() {
-   							const displayWidth = canvas.clientWidth;
-    							const displayHeight = displayWidth; // Hoặc đổi tỷ lệ nếu cần
-    							const pixelRatio = window.devicePixelRatio || 1;
+							 function resizeCanvas() {
+  							  // Ví dụ: lấy chiều rộng max 850px hoặc full chiều rộng container
+   							 const width = Math.min(window.innerWidth, 850);
+   							 const height = width; // giữ canvas vuông
 
-    							canvas.width = displayWidth * pixelRatio;
-    							canvas.height = displayHeight * pixelRatio;
+   							 canvas.width = width;
+   							 canvas.height = height;
 
-    							canvas.style.width = displayWidth + "px";
-    							canvas.style.height = displayHeight + "px";
-  									}
+   							 // CSS bạn có thể dùng width 100% để co giãn chiều ngang
+    							canvas.style.width = width + "px";
+    							canvas.style.height = height + "px";
+ 								 }
 
+						// Tính toán tỷ lệ scale
+							function getCanvasScale(canvas) {
+  							const rect = canvas.getBoundingClientRect();
+  							return {
+    								x: canvas.width / rect.width,
+    								y: canvas.height / rect.height
+  								};
+							}
+      
+      						// Điều chỉnh tọa độ theo tỷ lệ scale
+      							const clickX = (clientX - rect.left) * scale.x;
+      							const clickY = (clientY - rect.top) * scale.y;
+      
+      							const width = canvas.width;
+      							const height = canvas.height;
+      
+      						// Xác định vùng click
+      							let link = null;
+      							if (clickX < width/2 && clickY < height/2) link = links.topLeft;
+      							else if (clickX >= width/2 && clickY < height/2) link = links.topRight;
+      							else if (clickX < width/2 && clickY >= height/2) link = links.bottomLeft;
+      							else if (clickX >= width/2 && clickY >= height/2) link = links.bottomRight;
+
+      							if (link) {
+       							 window.location.href = link;
+      								}
+   							};
 						// Tạo animation
 							new rive.Rive({
   							src: "work.riv",
