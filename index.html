@@ -20,7 +20,7 @@
 				max-width: 1000px;
 				display: block;
 				margin: auto;
-				border: 1px solid green;
+				border: 1px solid blue;
 			}
 		</style>
 	<body class="is-preload">
@@ -72,29 +72,28 @@
 							<script>
   							const canvas = document.getElementById("rive-canvas");
 							function resizeCanvas() {
-									const displayWidth = canvas.clientWidth;
-									const displayHeight = displayWidth;
-									const pixelRatio = window.devicePixelRatio || 1;
+    							const displayWidth = canvas.clientWidth;
+    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
 
-									canvas.width = displayWidth * pixelRatio;
-									canvas.height = displayHeight * pixelRatio;
+    						// Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
+    							canvas.width = displayWidth;
+    							canvas.height = displayHeight;
+  									}
 
-									canvas.style.width = displayWidth + "px";
-									canvas.style.height = displayHeight + "px";
-								}
+  						// Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
+  							window.addEventListener("resize", resizeCanvas);
+  							resizeCanvas();
 
-						// Tạo animation
-							new rive.Rive({
-  							src: "work.riv",
-  							canvas: canvas,
-  							autoplay: true,
-  							stateMachines: ["State Machine 1"],
-  							onLoad: () => {
-    							console.log("Rive animation loaded");
-      								}
-   							};
-							window.addEventListener("resize", resizeCanvas);
- 							 resizeCanvas();
+  						// Tạo animation
+  							new rive.Rive({
+    							src: "work.riv",
+    							canvas: canvas,
+    							autoplay: true,
+    							stateMachines: ["State Machine 1"],
+    							onLoad: () => {
+      							console.log("Rive animation loaded");
+    									}
+  								});
 							</script>
 						</article>
 
