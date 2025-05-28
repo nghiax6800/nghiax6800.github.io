@@ -62,32 +62,33 @@
 						<!-- Rive Script -->
 							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
 							<script>
-							  const canvas = document.getElementById("rive-canvas");
+  							const canvas = document.getElementById("rive-canvas");
 
 							  function resizeCanvas() {
- 							   const displayWidth = canvas.clientWidth;
-  							   const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
+    							const displayWidth = canvas.clientWidth;
+    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
 
-    						// Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
-    								canvas.width = displayWidth;
-    								canvas.height = displayHeight;
-  									}
-
- 						 // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
-  								window.addEventListener("resize", resizeCanvas);
-  								resizeCanvas();
+   						 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
+   							 canvas.width = displayWidth;
+   							 canvas.height = displayHeight;
+ 									 }
+	
+						  // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
+ 							 window.addEventListener("resize", resizeCanvas);
+ 							 resizeCanvas();
 
   						// Tạo animation
-  								new rive.Rive({
-    								src: "work.riv",
-    								canvas: canvas,
-    								autoplay: true,
-    								stateMachines: ["State Machine 1"],
-    								onLoad: () => {
+ 							new rive.Rive({
+    							src: "work.riv",
+    							canvas: canvas,
+    							autoplay: true,
+    							stateMachines: ["State Machine 1"],
+    							onLoad: () => {
       								console.log("Rive animation loaded");
-   									 }
-								  });
+    								}
+  								});
 							</script>
+
 
 
 						<!-- About -->
