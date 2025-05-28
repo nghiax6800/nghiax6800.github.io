@@ -74,23 +74,23 @@
 
     									canvas.style.width = displayWidth + "px";
     									canvas.style.height = displayHeight + "px";
-  								}
+  									}
 
  							 // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
-  								window.addEventListener("resize", resizeCanvas);
-								  resizeCanvas();
+  									window.addEventListener("resize", resizeCanvas);
+									  resizeCanvas();
 
   							// Khởi tạo animation rive sau khi canvas đã được thiết lập kích thước
-  								const riveInstance = new rive.Rive({
-   								src: "work.riv", // Đảm bảo đường dẫn chính xác
-    								canvas: canvas,
-  							 	autoplay: true,
-							    	stateMachines: ["State Machine 1"],
-   							 	onLoad: () => {
-      								console.log("Rive animation loaded");
+  									const riveInstance = new rive.Rive({
+   									src: "work.riv", // Đảm bảo đường dẫn chính xác
+    									canvas: canvas,
+  							 		autoplay: true,
+							    		stateMachines: ["State Machine 1"],
+   							 		onLoad: () => {
+      									console.log("Rive animation loaded");
   									  }
 								  });
-							</script>
+								</script>
 
 						<!-- About -->
 							<article id="about">
