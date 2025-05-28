@@ -20,7 +20,7 @@
 				max-width: 1000px;
 				display: block;
 				margin: auto;
-				border: 1px solid red;
+				border: 1px solid green;
 			}
 		</style>
 	<body class="is-preload">
@@ -96,6 +96,15 @@
   						// Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
   							window.addEventListener("resize", resizeCanvas);
   							resizeCanvas();
+								
+						// Tính toán tỷ lệ scale
+							function getCanvasScale(canvas) {
+  							const rect = canvas.getBoundingClientRect();
+  							return {
+    								x: canvas.width / rect.width,
+    								y: canvas.height / rect.height
+  								};
+							}
 
   						// Tạo animation
   							new rive.Rive({
