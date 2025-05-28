@@ -60,61 +60,74 @@
 							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
 							<script>
   							const canvas = document.getElementById("rive-canvas");
-
-							  function resizeCanvas() {
-    							const displayWidth = canvas.clientWidth;
-    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
-
-   						 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
-   							 canvas.width = displayWidth;
-   							 canvas.height = displayHeight;
- 									 }
-	
-						  // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
- 							 window.addEventListener("resize", resizeCanvas);
- 							 resizeCanvas();
 							const links = {
-    								topLeft: "motiongraphic.html",
-  								topRight: "anim.html",
-    								bottomLeft: "storyboard.html",
-    								bottomRight: "passion.html"
+								topLeft: "motiongraphic.html",
+ 								topRight: "anim.html",
+  								bottomLeft: "storyboard.html",
+  								bottomRight: "passion.html"
+										};
+
+						// Tính toán tỷ lệ scale
+							function getCanvasScale(canvas) {
+  							const rect = canvas.getBoundingClientRect();
+  							return {
+    								x: canvas.width / rect.width,
+    								y: canvas.height / rect.height
   								};
-  						// Tạo animation
- 							new rive.Rive({
-    							src: "work.riv",
-    							canvas: canvas,
-    							autoplay: true,
-    							stateMachines: ["State Machine 1"],
-    							onLoad: () => {
-      								console.log("Rive animation loaded");
-							onst width = canvas.width;
-  							    const height = canvas.height;
-    								const regions = [
-      								{ name: "top-left", x: 0, y: 0, width: width / 2, height: height / 2, link: links.topLeft },
-       								{ name: "top-right", x: width / 2, y: 0, width: width / 2, height: height / 2, link: links.topRight },
-       								{ name: "bottom-left", x: 0, y: height / 2, width: width / 2, height: height / 2, link: links.bottomLeft },
-        							{ name: "bottom-right", x: width / 2, y: height / 2, width: width / 2, height: height / 2, link: links.bottomRight }
-     									 ];
+							}
 
-      								canvas.addEventListener('click', (e) => {
-        							const rect = canvas.getBoundingClientRect();
-        							const clickX = e.clientX - rect.left;
-        							const clickY = e.clientY - rect.top;
+						// Tạo animation
+							new rive.Rive({
+  							src: "work.riv",
+  							canvas: canvas,
+  							autoplay: true,
+  							stateMachines: ["State Machine 1"],
+  							onLoad: () => {
+    							console.log("Rive animation loaded");
+    
+    							const handleInteraction = (clientX, clientY) => {
+      							const rect = canvas.getBoundingClientRect();
+      							const scale = getCanvasScale(canvas);
+      
+      						// Điều chỉnh tọa độ theo tỷ lệ scale
+      							const clickX = (clientX - rect.left) * scale.x;
+      							const clickY = (clientY - rect.top) * scale.y;
+      
+      							const width = canvas.width;
+      							const height = canvas.height;
+      
+      						// Xác định vùng click
+      							let link = null;
+      							if (clickX < width/2 && clickY < height/2) link = links.topLeft;
+      							else if (clickX >= width/2 && clickY < height/2) link = links.topRight;
+      							else if (clickX < width/2 && clickY >= height/2) link = links.bottomLeft;
+      							else if (clickX >= width/2 && clickY >= height/2) link = links.bottomRight;
 
-        							const clickedRegion = regions.find(region =>
-          								clickX >= region.x &&
-         								clickX <= region.x + region.width &&
-          								clickY >= region.y &&
-          								clickY <= region.y + region.height
-        									);
+      							if (link) {
+       							 window.location.href = link;
+      								}
+   							};
 
-        							if (clickedRegion) {
-         							 // Chuyển tới trang html nội bộ
-          							window.location.href = clickedRegion.link;
-        									}
-     									 });
-   								 	}
-								  });
+    						// Xử lý cả click và touch
+    							canvas.addEventListener('click', (e) => handleInteraction(e.clientX, e.clientY));
+    							canvas.addEventListener('touchend', (e) => {
+      								e.preventDefault();
+      							handleInteraction(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+   									 });
+  								}
+							});
+
+						// Resize handler
+							function resizeCanvas() {
+ 							const displayWidth = canvas.clientWidth;
+  							const displayHeight = displayWidth;
+  							canvas.width = displayWidth;
+  							canvas.height = displayHeight;
+									}
+
+						// Khởi tạo và lắng nghe sự kiện resize
+							resizeCanvas();
+							window.addEventListener("resize", resizeCanvas);
 							</script>
 						</article>
 
