@@ -67,15 +67,17 @@
   								bottomRight: "passion.html"
 										};
 							 function resizeCanvas() {
-    							const displayWidth = canvas.clientWidth;
-    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
+    							 const width = Math.min(window.innerWidth, 850);
+   							 const height = width; // giữ canvas vuông
 
-   						 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
-   							 canvas.width = displayWidth;
-   							 canvas.height = displayHeight;
- 									 }
+   							 canvas.width = width;
+   							 canvas.height = height;
+
+   							 // CSS bạn có thể dùng width 100% để co giãn chiều ngang
+    							canvas.style.width = width + "px";
+    							canvas.style.height = height + "px";
+ 								 }
   							
-  
 						// Tạo animation
 							new rive.Rive({
   							src: "work.riv",
