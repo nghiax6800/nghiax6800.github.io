@@ -20,7 +20,7 @@
 				max-width: 1000px;
 				display: block;
 				margin: auto;
-				border: 1px solid blue;
+				border: 1px solid red;
 			}
 		</style>
 	<body class="is-preload">
@@ -71,13 +71,26 @@
 							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
 							<script>
   							const canvas = document.getElementById("rive-canvas");
+								const links = {
+								topLeft: "motiongraphic.html",
+ 								topRight: "anim.html",
+  								bottomLeft: "storyboard.html",
+  								bottomRight: "passion.html"
+										};
+						// === DEBOUNCE FUNCTION === //
+							let resizeTimeout;
+							function debounceResize() {
+  							clearTimeout(resizeTimeout);
+  							resizeTimeout = setTimeout(resizeCanvas, 100);
+								}
+							
 							function resizeCanvas() {
     							const displayWidth = canvas.clientWidth;
-    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
+							const displayHeight = displayWidth;
+							const pixelRatio = window.devicePixelRatio || 1;
 
-    						// Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
-    							canvas.width = displayWidth;
-    							canvas.height = displayHeight;
+							canvas.width = displayWidth * pixelRatio;
+							canvas.height = displayHeight * pixelRatio;
   									}
 
   						// Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
