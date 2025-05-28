@@ -74,12 +74,14 @@
 								}
 
 						// === RESIZE CANVAS (ĐÃ TỐI ƯU) === //
-							function resizeCanvas() {
-  								const container = canvas.parentElement; // Lấy phần tử chứa canvas
-  								const containerWidth = container.clientWidth;
-  								canvas.width = size;
-    								canvas.height = size;
-									  }
+							 function resizeCanvas() {
+    							const displayWidth = canvas.clientWidth;
+    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
+
+   						 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
+   							 canvas.width = displayWidth;
+   							 canvas.height = displayHeight;
+ 									 }
   
 						// Tính toán tỷ lệ scale
 							function getCanvasScale(canvas) {
@@ -130,14 +132,6 @@
    									 });
   								}
 							});
-
-						// Resize handler
-							function resizeCanvas() {
- 							const displayWidth = canvas.clientWidth;
-  							const displayHeight = displayWidth;
-  							canvas.width = displayWidth;
-  							canvas.height = displayHeight;
-									}
 
 						// Khởi tạo và lắng nghe sự kiện resize
 							resizeCanvas();
