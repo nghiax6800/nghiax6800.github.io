@@ -57,30 +57,25 @@
 						</article>
 
 						<!-- Rive Canvas -->
-							<canvas id="rive-canvas" style="display:block; margin:auto; width: 100%; height: auto; max-width: 850px;"></canvas>
+								<canvas id="rive-canvas" style="display:block; margin:auto; width: 100%; height: auto; max-width: 850px;"></canvas>
 
 						<!-- Rive Script -->
-							<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
-							<script>
-							  const canvas = document.getElementById("rive-canvas");
+								<script src="https://unpkg.com/@rive-app/webgl@2.8.3"></script>
+								<script>
+ 									 const canvas = document.getElementById("rive-canvas");
 
-							  // Hàm cập nhật kích thước canvas bằng pixel thực tế (canvas.width/height)
- 							 function resizeCanvas() {
-  							  // Ví dụ: lấy chiều rộng max 850px hoặc full chiều rộng container
-   							 const width = Math.min(window.innerWidth, 850);
-   							 const height = width; // giữ canvas vuông
+ 									 function resizeCanvas() {
+    									const displayWidth = canvas.clientWidth;
+    									const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
 
-   							 canvas.width = width;
-   							 canvas.height = height;
+   							 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
+    									canvas.width = displayWidth;
+    									canvas.height = displayHeight;
+									  }
 
-   							 // CSS bạn có thể dùng width 100% để co giãn chiều ngang
-    							canvas.style.width = width + "px";
-    							canvas.style.height = height + "px";
- 								 }
-	
- 							 // Gọi resize canvas lúc load và khi resize window
-							  window.addEventListener("resize", resizeCanvas);
-							  resizeCanvas();
+ 							 // Resize ngay từ đầu và khi thay đổi kích thước trình duyệt
+  								window.addEventListener("resize", resizeCanvas);
+								  resizeCanvas();
 
   							// Khởi tạo animation rive sau khi canvas đã được thiết lập kích thước
   								const riveInstance = new rive.Rive({
