@@ -82,6 +82,15 @@
     							stateMachines: ["State Machine 1"],
     							onLoad: () => {
       								console.log("Rive animation loaded");
+								const inputs = rive.stateMachineInputs("State Machine 1");
+        							const gotoM = inputs.find(i => i.name === "GotoM");
+
+       								 // Lắng nghe click
+        							document.getElementById("rive-canvas").addEventListener("click", () => {
+         							 gotoM.fire(); // Kích hoạt trigger
+          
+         							 // 👉 Gắn link sau khi kích hoạt animation
+          							window.location.href = "projects.html"; // Đổi link tại đây
     								}
   								});
 							</script>
