@@ -77,7 +77,9 @@
 							function resizeCanvas() {
   								const container = canvas.parentElement; // Lấy phần tử chứa canvas
   								const containerWidth = container.clientWidth;
-  								const containerHeight = container.clientHeight || containerWidth * 0.75;
+  								canvas.width = size;
+    								canvas.height = size;
+									  }
   
 						// Tính toán tỷ lệ scale
 							function getCanvasScale(canvas) {
@@ -147,9 +149,6 @@
 							} else {
   							window.addEventListener('resize', debounceResize);
 								}
-
-						// Khởi chạy lần đầu
-							resizeCanvas();
 							</script>
 						</article>
 
