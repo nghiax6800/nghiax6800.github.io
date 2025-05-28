@@ -20,7 +20,7 @@
 				max-width: 1000px;
 				display: block;
 				margin: auto;
-				border: 1px solid green;
+				border: 1px solid red;
 			}
 		</style>
 	<body class="is-preload">
@@ -111,7 +111,7 @@
   							canvas: canvas,
   							autoplay: true,
   							stateMachines: ["State Machine 1"],
-							fit: rive.Fit.cover
+							fit: rive.Fit.contain
   							alignment: rive.Alignment.center,
   							onLoad: () => {
     							console.log("Rive animation loaded");
