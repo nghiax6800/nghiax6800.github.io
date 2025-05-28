@@ -73,15 +73,17 @@
   							resizeTimeout = setTimeout(resizeCanvas, 100);
 								}
 
-						// === RESIZE CANVAS (ĐÃ TỐI ƯU) === //
-							 function resizeCanvas() {
-    							const displayWidth = canvas.clientWidth;
-    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
+							function resizeCanvas() {
+   							const displayWidth = canvas.clientWidth;
+    							const displayHeight = displayWidth; // Hoặc đổi tỷ lệ nếu cần
+    							const pixelRatio = window.devicePixelRatio || 1;
 
-   						 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
-   							 canvas.width = displayWidth;
-   							 canvas.height = displayHeight;
- 									 }
+    							canvas.width = displayWidth * pixelRatio;
+    							canvas.height = displayHeight * pixelRatio;
+
+    							canvas.style.width = displayWidth + "px";
+    							canvas.style.height = displayHeight + "px";
+  									}
   
 						// Tính toán tỷ lệ scale
 							function getCanvasScale(canvas) {
@@ -133,13 +135,8 @@
   								}
 							});
 						// === LẮNG NGHE RESIZE === //
-							if (typeof ResizeObserver !== 'undefined') {
-  							const resizeObserver = new ResizeObserver(debounceResize);
-  							resizeObserver.observe(canvas.parentElement);
-							} else {
-  							window.addEventListener('resize', debounceResize);
-								}
-							resizeCanvas();
+							window.addEventListener("resize", resizeCanvas);
+ 							 resizeCanvas();
 							</script>
 						</article>
 
