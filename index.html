@@ -66,16 +66,14 @@
   								bottomLeft: "storyboard.html",
   								bottomRight: "passion.html"
 										};
-							function resizeCanvas() {
-   							const displayWidth = canvas.clientWidth;
-    							const displayHeight = displayWidth; // Hoặc đổi tỷ lệ nếu cần
-    							const pixelRatio = window.devicePixelRatio || 1;
+							 function resizeCanvas() {
+    							const displayWidth = canvas.clientWidth;
+    							const displayHeight = displayWidth; // hoặc có thể là displayWidth * 0.75 nếu không cần vuông
 
-    							canvas.width = displayWidth * pixelRatio;
-    							canvas.height = displayHeight * pixelRatio;
-
-    							canvas.style.width = displayWidth + "px";
-    							canvas.style.height = displayHeight + "px";
+   						 // Gán kích thước pixel thực tế cho canvas (rất quan trọng với WebGL)
+   							 canvas.width = displayWidth;
+   							 canvas.height = displayHeight;
+ 									 }
   									}
   
 						// Tạo animation
