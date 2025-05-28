@@ -84,9 +84,32 @@
       								console.log("Rive animation loaded");
 								}
   								});
-							document.getElementById("rive-canvas").addEventListener("click", function () {
-   							window.location.href = 'motiongraphic.html';
-  								});
+							const rive = new rive.Rive({
+   							new rive.Rive({
+    							src: "work.riv",
+    							canvas: canvas,
+    							autoplay: true,
+    							stateMachines: ["State Machine 1"],
+    							onLoad: () => {
+      								const artboard = rive.contents.artboard;
+								const hitArea = artboard.artboardLayers.find(layer => layer.name === 'hit1');
+      
+      							document.getElementById("rive-canvas").addEventListener('click', (e) => {
+        						// Lấy tọa độ click
+        						const rect = canvas.getBoundingClientRect();
+        						const x = e.clientX - rect.left;
+        						const y = e.clientY - rect.top;
+        
+       							 // Kiểm tra xem click có nằm trong hit area không
+        						if (hitArea && hitArea.containsPoint(x, y)) {
+          
+          						// Chuyển link sau khi click
+          						window.location.href = 'motiongraphic.html';
+        									}
+     									 });
+   								 }
+ 							 });
+							
 							</script>
 						</article>
 
