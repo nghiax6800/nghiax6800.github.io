@@ -66,7 +66,19 @@
   								bottomLeft: "storyboard.html",
   								bottomRight: "passion.html"
 										};
+						// === DEBOUNCE FUNCTION === //
+							let resizeTimeout;
+							function debounceResize() {
+  							clearTimeout(resizeTimeout);
+  							resizeTimeout = setTimeout(resizeCanvas, 100);
+								}
 
+						// === RESIZE CANVAS (ĐÃ TỐI ƯU) === //
+							function resizeCanvas() {
+  								const container = canvas.parentElement; // Lấy phần tử chứa canvas
+  								const containerWidth = container.clientWidth;
+  								const containerHeight = container.clientHeight || containerWidth * 0.75;
+  
 						// Tính toán tỷ lệ scale
 							function getCanvasScale(canvas) {
   							const rect = canvas.getBoundingClientRect();
@@ -127,7 +139,17 @@
 
 						// Khởi tạo và lắng nghe sự kiện resize
 							resizeCanvas();
-							window.addEventListener("resize", resizeCanvas);
+						
+						// === LẮNG NGHE RESIZE === //
+							if (typeof ResizeObserver !== 'undefined') {
+  							const resizeObserver = new ResizeObserver(debounceResize);
+  							resizeObserver.observe(canvas.parentElement);
+							} else {
+  							window.addEventListener('resize', debounceResize);
+								}
+
+						// Khởi chạy lần đầu
+							resizeCanvas();
 							</script>
 						</article>
 
