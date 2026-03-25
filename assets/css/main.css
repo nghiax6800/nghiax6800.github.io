@@ -1659,12 +1659,14 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
-	/* video container */
 .video-container {
   position: relative;
-  width: 100%;
-  max-width: 900px;
-  margin: auto;
+  width: 90%;        /* không full 100% để có margin */
+  max-width: 1400px; /* giới hạn tối đa */
+
+  margin-left: auto;
+  margin-right: auto; /* đảm bảo center */
+
   padding-bottom: 56.25%;
 }
 
