@@ -1,46 +1,61 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 
-<html lang="vi">
+<html>
 <head>
+    <title>Starting My 2D Animation Journey</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Starting My 2D Animation Journey</title>
 
-```
-<!-- Giữ style của HTML5UP -->
+<!-- CSS của template -->
 <link rel="stylesheet" href="../assets/css/main.css" />
+<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 
 <style>
+    /* Giữ nền */
     body {
         background: #1b1f22;
     }
 
+    /* Căn giữa toàn bộ content */
     #wrapper {
-        display: block !important;
+        display: flex;
+        justify-content: center;
     }
 
+    /* Container chính */
     #main {
-        display: block !important;
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
     }
 
+    /* Article giống homepage nhưng căn giữa */
     article {
+        width: 100%;
+        max-width: 900px;
+        margin: 80px auto;
         opacity: 1 !important;
-        transform: none !important;
-        display: block !important;
+    }
+
+    /* Nút back */
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 30px;
     }
 </style>
-```
 
 </head>
 
-<body>
+<body class="is-preload">
 
 <div id="wrapper">
-
-```
 <div id="main">
 
-    <article>
+    <!-- Trick: dùng đúng logic của Dimension -->
+    <article id="post1" class="active">
+
+        <a href="../Blog.html" class="button back-btn">← Back to Blog</a>
+
         <h2 class="major">Starting My 2D Animation Journey</h2>
 
         <span class="image main">
@@ -49,15 +64,41 @@
 
         <p>My journey into 2D animation started...</p>
 
-        <p>At first, I didn’t really understand timing, spacing, or acting...</p>
+        <p>
+            This is where you write your real story — struggles, mindset, growth.
+            Make it feel like a director sharing a vision.
+        </p>
 
-        <a href="../Blog.html" class="button">← Back to Blog</a>
     </article>
 
 </div>
-```
-
 </div>
+
+<!-- Scripts GIỮ NGUYÊN -->
+
+<script src="../assets/js/jquery.min.js"></script>
+
+<script src="../assets/js/browser.min.js"></script>
+
+<script src="../assets/js/breakpoints.min.js"></script>
+
+<script src="../assets/js/util.js"></script>
+
+<script src="../assets/js/main.js"></script>
+
+<!-- 🔥 Trick để force hiển thị -->
+
+<script>
+    // Sau khi load, ép article luôn hiện
+    window.addEventListener("load", function () {
+        document.body.classList.remove("is-preload");
+
+        const article = document.querySelector("article");
+        if (article) {
+            article.classList.add("active");
+        }
+    });
+</script>
 
 </body>
 </html>
