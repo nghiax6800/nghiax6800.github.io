@@ -1,48 +1,139 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="vi">
 <head>
     <title>Starting My 2D Animation Journey</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+    <style>
+        /* Gợi lại vibe của Dimension: Font chữ, màu sắc và hiệu ứng mờ ảo */
+        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Source Sans Pro", sans-serif;
+            background-color: #1b1f22; /* Màu tối đặc trưng */
+            background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #wrapper {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        /* Khối nội dung chính */
+        article {
+            background: rgba(27, 31, 34, 0.85); /* Hiệu ứng kính mờ */
+            border: solid 1px rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 3rem;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2.major {
+            font-size: 1.5rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            border-bottom: solid 2px #ffffff;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .image.main {
+            display: block;
+            margin: 0 0 2rem 0;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .image.main img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image.main:hover img {
+            transform: scale(1.02);
+        }
+
+        p {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Nút quay lại kiểu Minimal */
+        .btn-back {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #ffffff;
+            border: solid 1px rgba(255, 255, 255, 0.2);
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        /* Responsive cho điện thoại */
+        @media screen and (max-width: 736px) {
+            article {
+                padding: 1.5rem;
+            }
+            h2.major {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
-<body class="is-preload">
+<body>
 
-<div id="wrapper">
-
-    <!-- Header -->
-    <header id="header">
-        <div class="content">
-            <div class="inner">
-                <h1>Blog</h1>
-                <p>Animation, Storytelling and Personal Journey</p>
-                <a href="/Blog.html" class="button">Back to Blog</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main -->
-    <body class="is-preload is-article-visible"> <div id="wrapper">
-    ...
-    <div id="main">
-        <article id="journey" class="active">
+    <div id="wrapper">
+        <article>
             <h2 class="major">Starting My 2D Animation Journey</h2>
-            <span class="image main"><img src="../images/pic02.jpg" alt="" /></span>
-            <p>My journey into 2D animation started...</p>
             
-            <a href="/Blog.html" class="close">Close</a>
+            <span class="image main">
+                <img src="../images/pic02.jpg" alt="Animation Work" onerror="this.src='https://via.placeholder.com/800x400'"/>
+            </span>
+
+            <p>
+                Hành trình đến với thế giới hoạt hình 2D của tôi không chỉ là việc học cách vẽ, mà là học cách thổi hồn vào từng khung hình. 
+                Bắt đầu từ những nét vẽ nguệch ngoạc đầu tiên, tôi nhận ra rằng sự kiên trì là chìa khóa để tạo nên những chuyển động mượt mà.
+            </p>
+            
+            <p>
+                Trong bài viết này, tôi sẽ chia sẻ về những công cụ tôi đã sử dụng, từ những phần mềm miễn phí đến các kỹ thuật chuyên sâu mà tôi đang tìm tòi mỗi ngày.
+            </p>
+
+            <a href="/Blog.html" class="btn-back">← Back to Blog</a>
         </article>
     </div>
-
-</div>
-
-<!-- Scripts -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/browser.min.js"></script>
-<script src="../assets/js/breakpoints.min.js"></script>
-<script src="../assets/js/util.js"></script>
-<script src="../assets/js/main.js"></script>
 
 </body>
 </html>
