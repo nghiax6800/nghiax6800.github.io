@@ -1,47 +1,83 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="vi">
 <head>
     <title>Starting My 2D Animation Journey</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../assets/css/main.css" />
+    
     <style>
-        /* Ghi đè các thuộc tính gây ẩn của template Dimension */
-        body:before {
-            content: none !important; /* Bỏ overlay nếu cần */
-        }
-        
-        #main {
+        /* 1. ÉP HIỂN THỊ: Ghi đè cơ chế ẩn của template Dimension */
+        body, #wrapper, #main, article {
             display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
             opacity: 1 !important;
             visibility: visible !important;
-            -moz-transform: none !important;
-            -webkit-transform: none !important;
-            -ms-transform: none !important;
-            transform: none !important;
+            position: relative !important;
+        }
+
+        /* 2. ĐỒNG BỘ FONT CHỮ: Lấy đúng "vibe" từ file index */
+        body {
+            background-color: #1b1f22 !important; /* Màu nền tối tối giản */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        #main {
             width: 100%;
             max-width: 800px;
-            z-index: 10;
+            margin: 0 auto;
+            justify-content: center !important;
         }
 
         article {
-            display: block !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            background: rgba(27, 31, 34, 0.85); /* Màu nền khớp với body của bạn */
-            padding: 3rem;
-            border: solid 1px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            background: rgba(27, 31, 34, 0.85) !important;
+            border: solid 1px rgba(255, 255, 255, 0.1) !important;
             border-radius: 4px;
+            padding: 4rem 3rem !important;
+            box-sizing: border-box;
         }
 
-        /* Đảm bảo trang không có ảnh nền nếu bạn muốn bỏ */
+        /* 3. SỬA LỖI TRÀN CHỮ: Cho phép tiêu đề xuống dòng mượt mà */
+        h2.major {
+            width: 100% !important;
+            max-width: 100% !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            display: block !important;
+            letter-spacing: 0.5rem !important; /* Giữ độ giãn chữ đặc trưng */
+            line-height: 1.4 !important;
+            border-bottom: solid 1px #ffffff !important;
+            padding-bottom: 0.5rem !important;
+        }
+
+        /* 4. ĐIỀU CHỈNH CHỮ TRONG BÀI (P): Giống hệt index */
+        article p {
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.8 !important;
+            font-size: 1.1rem !important;
+            margin-bottom: 2rem !important;
+            text-align: justify;
+        }
+
+        /* 5. LOẠI BỎ CÁC PHẦN GÂY LỖI */
         #bg { display: none !important; }
-        
-        body {
-            justify-content: center !important;
-            align-items: center !important;
-            display: flex !important;
-            overflow-y: auto !important; /* Cho phép cuộn trang */
+        #header { display: none !important; } /* Ẩn header nếu bạn chỉ muốn hiện bài viết */
+
+        /* Responsive cho điện thoại */
+        @media screen and (max-width: 736px) {
+            article {
+                padding: 2rem 1.5rem !important;
+            }
+            h2.major {
+                font-size: 1.25rem !important;
+                letter-spacing: 0.3rem !important;
+            }
         }
     </style>
 </head>
@@ -53,7 +89,7 @@
                 <h2 class="major">Starting My 2D Animation Journey</h2>
                 
                 <span class="image main">
-                    <img src="../images/pic02.jpg" alt="Animation Journey" />
+                    <img src="../images/pic02.jpg" alt="My 2D Animation Journey" />
                 </span>
 
                 <p>Hành trình đến với thế giới hoạt hình 2D của tôi bắt đầu từ niềm đam mê với những chuyển động đơn giản nhất. Mỗi khung hình là một câu chuyện, mỗi nét vẽ là một nỗ lực để tạo ra sự sống.</p>
